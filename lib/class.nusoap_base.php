@@ -103,7 +103,7 @@ class nusoap_base {
 	* @access   public
 	*/
 	var $XMLSchemaVersion = 'http://www.w3.org/2001/XMLSchema';
-	
+
     /**
 	* charset encoding for outgoing messages
 	*
@@ -112,7 +112,14 @@ class nusoap_base {
 	*/
     var $soap_defencoding = 'ISO-8859-1';
 	//var $soap_defencoding = 'UTF-8';
-
+	/**
+  * set soapenv version
+  *
+  * @var      string
+  * @access   public
+  */
+	 public $soapenv = 'soapenv';
+	 
 	/**
 	* namespaces in an array of prefix => uri
 	*
@@ -121,10 +128,8 @@ class nusoap_base {
 	* @var      array
 	* @access   public
 	*/
-    var $soapenv = 'soapenv';
-	
 	var $namespaces = array(
-		$soapenv => 'http://schemas.xmlsoap.org/soap/envelope/',
+		'soapenv' => 'http://schemas.xmlsoap.org/soap/envelope/',
 		'xsd' => 'http://www.w3.org/2001/XMLSchema',
 		'xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
 		'SOAP-ENC' => 'http://schemas.xmlsoap.org/soap/encoding/'
@@ -372,7 +377,7 @@ class nusoap_base {
 		$this->debug("in serialize_val: name=$name, type=$type, name_ns=$name_ns, type_ns=$type_ns, use=$use, soapval=$soapval");
 		$this->appendDebug('value=' . $this->varDump($val));
 		$this->appendDebug('attributes=' . $this->varDump($attributes));
-		
+
     	if (is_object($val) && get_class($val) == 'soapval' && (! $soapval)) {
     		$this->debug("serialize_val: serialize soapval");
         	$xml = $val->serialize($use);
@@ -651,7 +656,7 @@ class nusoap_base {
 		$ns_string .= " xmlns:$k=\"$v\"";
 	}
 	if($encodingStyle) {
-		$ns_string = " ".$soapenv.":encodingStyle=\"$encodingStyle\"$ns_string";
+		$ns_string = " ".$this->soapenv.":encodingStyle=\"$encodingStyle\"$ns_string";
 	}
 
 	// serialize headers
@@ -668,17 +673,17 @@ class nusoap_base {
 			$headers = $xml;
 			$this->debug("In serializeEnvelope, serialized array of headers to $headers");
 		}
-		$headers = "<".$soapenv.":Header>".$headers."</".$soapenv.":Header>";
+		$headers = "<".$this->soapenv.":Header>".$headers."</".$this->soapenv.":Header>";
 	}
 	// serialize envelope
 	return
 	'<?xml version="1.0" encoding="'.$this->soap_defencoding .'"?'.">".
-	'<'.$soapenv.':Envelope'.$ns_string.">".
+	'<'.$this->soapenv.':Envelope'.$ns_string.">".
 	$headers.
-	"<".$soapenv.":Body>".
+	"<".$this->soapenv.":Body>".
 		$body.
-	"</".$soapenv.":Body>".
-	"</".$soapenv.":Envelope>";
+	"</".$this->soapenv.":Body>".
+	"</".$this->soapenv.":Envelope>";
     }
 
 	/**
@@ -946,7 +951,7 @@ function iso8601_to_timestamp($datestr){
 function usleepWindows($usec)
 {
 	$start = gettimeofday();
-	
+
 	do
 	{
 		$stop = gettimeofday();
