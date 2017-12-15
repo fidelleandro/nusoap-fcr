@@ -1,43 +1,6 @@
 <?php
 
 /*
-$Id: class.nusoap_base.php,v 1.56 2010/04/26 20:15:08 snichol Exp $
-
-NuSOAP - Web Services Toolkit for PHP
-
-Copyright (c) 2002 NuSphere Corporation
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-The NuSOAP project home is:
-http://sourceforge.net/projects/nusoap/
-
-The primary support for NuSOAP is the Help forum on the project home page.
-
-If you have any questions or comments, please email:
-
-Dietrich Ayala
-dietrich@ganx4.com
-http://dietrich.ganx4.com/nusoap
-
-NuSphere Corporation
-http://www.nusphere.com
-
-*/
-
-/*
  *	Some of the standards implmented in whole or part by NuSOAP:
  *
  *	SOAP 1.1 (http://www.w3.org/TR/2000/NOTE-SOAP-20000508/)
@@ -77,8 +40,7 @@ $GLOBALS['_transient']['static']['nusoap_base']['globalDebugLevel'] = 9;
 *
 * nusoap_base
 *
-* @author   Dietrich Ayala <dietrich@ganx4.com>
-* @author   Scott Nichol <snichol@users.sourceforge.net>
+* @author   fidel
 * @version  $Id: class.nusoap_base.php,v 1.56 2010/04/26 20:15:08 snichol Exp $
 * @access   public
 */
@@ -89,14 +51,14 @@ class nusoap_base {
 	 * @var string
 	 * @access private
 	 */
-	var $title = 'NuSOAP';
+	var $title = 'NuSOAP2';
 	/**
 	 * Version for HTTP headers.
 	 *
 	 * @var string
 	 * @access private
 	 */
-	var $version = '0.9.5';
+	var $version = '0.q';
 	/**
 	 * CVS revision for HTTP headers.
 	 *
