@@ -1,15 +1,11 @@
 {
-    "name": "fergusean/nusoap",
+    "name": "fcr/nusoap",
     "description": "NuSOAP re-packaged for Packagist/Composer",
     "license": "LGPLv2",
     "authors": [
         {
-            "name": "Dietrich Ayala",
-            "homepage": "http://sourceforge.net/u/dietricha/profile/"
-        },
-        {
-            "name": "Scott Nichol",
-            "homepage": "http://sourceforge.net/u/snichol/profile/"
+            "name": "Fidel Leandro c. r.",
+            "homepage": ""
         }
     ],
     "autoload": {
